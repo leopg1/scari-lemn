@@ -1,0 +1,133 @@
+.section {
+  padding-block: var(--space-section);
+  background: var(--paper);
+}
+
+.head {
+  max-width: 44rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.title {
+  font-size: var(--step-4);
+  margin-top: 1.1rem;
+}
+
+.thin {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--oak-deep);
+}
+
+.intro {
+  margin-top: 1.4rem;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--walnut-soft);
+  max-width: 52ch;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(1.75rem, 5vw, 4.5rem);
+}
+
+.flip .figure {
+  order: 2;
+}
+
+.figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--ease-out);
+}
+
+.block:hover .figure img {
+  transform: scale(1.04);
+}
+
+.index {
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+  padding: 0.3rem 0.55rem;
+  background: oklch(0.235 0.012 60 / 0.5);
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+}
+
+.body {
+  max-width: 34ch;
+}
+
+.flip .body {
+  margin-left: auto;
+}
+
+.blockTitle {
+  font-size: var(--step-3);
+}
+
+.blurb {
+  margin-top: 1rem;
+  color: var(--walnut-soft);
+  font-size: var(--step-1);
+  line-height: 1.55;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--ember);
+  transition: gap 0.4s var(--ease-out);
+}
+
+.link:hover {
+  gap: 0.85rem;
+}
+
+.arrow {
+  width: 17px;
+  height: 17px;
+}
+
+@media (max-width: 760px) {
+  .block,
+  .flip {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  .flip .figure {
+    order: 0;
+  }
+  .body,
+  .flip .body {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}

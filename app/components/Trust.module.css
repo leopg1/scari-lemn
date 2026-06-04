@@ -1,0 +1,58 @@
+.trust {
+  background: var(--walnut);
+  color: var(--paper);
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  position: relative;
+  padding-left: clamp(1rem, 3vw, 2.5rem);
+}
+
+.item:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 70%;
+  background: oklch(0.985 0.006 75 / 0.18);
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--oak);
+  letter-spacing: -0.02em;
+}
+
+.label {
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  color: oklch(0.94 0.01 75 / 0.78);
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1rem;
+  }
+  .item {
+    padding-left: 0;
+  }
+  .item::before {
+    display: none !important;
+  }
+}

@@ -1,0 +1,20 @@
+/node_modules
+/.next/
+/out/
+/build
+.DS_Store
+*.pem
+npm-debug.log*
+.env*.local
+next-env.d.ts
+
+# local working artifacts (not part of the site)
+/.shots/
+/image.png
+/image copy*.png
+
+# context docs (keep local, not in repo)
+# PRODUCT.md and DESIGN.md are project notes; comment the next two lines
+# out if you want them tracked in the repo.
+/PRODUCT.md
+/DESIGN.md
