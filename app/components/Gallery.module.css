@@ -217,6 +217,27 @@
 }
 
 @media (max-width: 600px) {
+  /* two-up masonry: more work visible per screen, true gallery feel */
+  .grid {
+    columns: 2;
+    column-gap: 0.6rem;
+  }
+  .cell {
+    margin-bottom: 0.6rem;
+    border-radius: 5px;
+  }
+  .filters {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .chip {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.88rem;
+  }
+  .head {
+    margin-bottom: 1.5rem;
+  }
+
   .lbNav {
     position: absolute;
     bottom: 1.25rem;

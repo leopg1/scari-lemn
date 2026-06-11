@@ -136,6 +136,16 @@
     box-shadow 0.3s var(--ease-out), background-color 0.3s var(--ease-out);
 }
 
+/* custom chevron so the select matches the inputs across browsers */
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237a5c3e' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+}
+
 .field textarea {
   resize: vertical;
   min-height: 3.2rem;
@@ -271,12 +281,28 @@
 @media (max-width: 860px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .direct {
+    margin-top: 1.75rem;
+  }
+}
+
+@media (max-width: 680px) {
+  /* keep the submit button clear of the sticky call bar */
+  .section {
+    padding-bottom: calc(
+      var(--space-section) + 64px + env(safe-area-inset-bottom)
+    );
   }
 }
 
 @media (max-width: 460px) {
   .two {
     grid-template-columns: 1fr;
+  }
+  .formWrap {
+    padding: 1.25rem 1.1rem;
   }
 }
 

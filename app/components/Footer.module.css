@@ -109,6 +109,13 @@
   }
 }
 
+@media (max-width: 680px) {
+  /* keep the copyright line clear of the sticky call bar */
+  .bottom {
+    padding-bottom: calc(1.5rem + 64px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (max-width: 460px) {
   .top {
     grid-template-columns: 1fr;

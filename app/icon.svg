@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="oklch(0.345 0.045 48)"/>
+  <text x="32" y="33" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="600"
+        letter-spacing="0.5" fill="oklch(0.985 0.010 70)" text-anchor="middle" dominant-baseline="central">JMC</text>
+</svg>

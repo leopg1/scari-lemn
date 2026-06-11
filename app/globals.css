@@ -39,9 +39,9 @@
   --step-4: clamp(2.44rem, 2rem + 2.2vw, 4.4rem);
   --step-5: clamp(3.05rem, 2.3rem + 3.75vw, 6.25rem);
 
-  /* Spacing rhythm */
-  --space-section: clamp(4.5rem, 3rem + 7vw, 9rem);
-  --gutter: clamp(1.25rem, 0.8rem + 2.2vw, 3rem);
+  /* Spacing rhythm — tighter floor on phones, generous on desktop */
+  --space-section: clamp(3.75rem, 2.5rem + 7vw, 9rem);
+  --gutter: clamp(1.1rem, 0.7rem + 2.2vw, 3rem);
   --measure: 68ch;
 
   /* Shadows — warm, soft, walnut-tinted */
@@ -70,6 +70,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* anchor jumps land below the fixed 68px navbar */
+  scroll-padding-top: 84px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -122,6 +124,26 @@ button {
   outline: 2px solid var(--ember);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* accessibility skip link — hidden until keyboard-focused */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.7rem 1.1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-160%);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: none;
 }
 
 ::selection {

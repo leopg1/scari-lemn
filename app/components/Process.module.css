@@ -3,9 +3,17 @@
   background: var(--paper);
 }
 
-.head {
-  max-width: 40rem;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+/* intro on the left, the climbing flight of steps on the right */
+.grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.intro {
+  position: sticky;
+  top: clamp(5.5rem, 12vh, 8rem);
 }
 
 .title {
@@ -19,60 +27,105 @@
   color: var(--oak-deep);
 }
 
-.steps {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  counter-reset: step;
-}
-
-.step {
-  position: relative;
-  padding-top: 2rem;
-  border-top: 2px solid var(--hairline);
-}
-
-.step::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 2.5rem;
-  height: 2px;
-  background: var(--ember);
-}
-
-.num {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--oak-deep);
-  letter-spacing: 0.08em;
-}
-
-.stepTitle {
-  font-size: var(--step-2);
-  margin-top: 0.75rem;
-}
-
-.stepText {
-  margin-top: 0.75rem;
+.note {
+  margin-top: 1.4rem;
   color: var(--walnut-soft);
   font-size: var(--step-0);
-  line-height: 1.55;
+  line-height: 1.6;
+  max-width: 32ch;
 }
 
+/* ---- the flight ---- */
+.flight {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tread {
+  position: relative;
+  display: grid;
+  /* fixed numeral column so every title starts at the same x */
+  grid-template-columns: clamp(3.25rem, 5vw, 4.5rem) 1fr;
+  column-gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.tread:last-child {
+  padding-bottom: 0;
+}
+
+/* continuous vertical line linking every numeral, all aligned the same */
+.riser {
+  position: absolute;
+  left: clamp(1.35rem, 2.6vw, 1.95rem);
+  top: 3.4rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--sand);
+}
+
+.tread:last-child .riser {
+  display: none;
+}
+
+/* carved tread numeral — the anchor, in oak, large and quiet */
+.n {
+  grid-row: 1 / span 2;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 1.8rem + 2.6vw, 3.9rem);
+  font-weight: 500;
+  line-height: 0.85;
+  color: var(--oak);
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
+  /* keep the numeral aligned with the stringer line */
+  position: relative;
+  z-index: 1;
+}
+
+.tread:last-child .n {
+  color: var(--ember);
+}
+
+.body {
+  padding-top: 0.15rem;
+}
+
+.treadTitle {
+  font-size: var(--step-2);
+  line-height: 1.1;
+}
+
+.treadText {
+  margin-top: 0.65rem;
+  color: var(--walnut-soft);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+/* ---- responsive ---- */
 @media (max-width: 880px) {
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 1.75rem;
+  .grid {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 6vw, 3rem);
+  }
+  .intro {
+    position: static;
+  }
+  .note {
+    max-width: 46ch;
   }
 }
 
-@media (max-width: 480px) {
-  .steps {
-    grid-template-columns: 1fr;
+@media (max-width: 560px) {
+  .tread {
+    column-gap: 1rem;
+    padding-bottom: 1.75rem;
+  }
+  .riser {
+    left: 1.05rem;
+    top: 2.9rem;
   }
 }

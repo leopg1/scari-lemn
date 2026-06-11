@@ -1,11 +1,13 @@
 .hero {
   position: relative;
+  /* fill exactly one viewport; min-height (not height) so content can never
+     be clipped on very short screens — the section grows instead */
   min-height: 100vh;
   min-height: 100svh;
-  height: 100svh;
   display: flex;
-  align-items: flex-end;
-  padding-block: clamp(7rem, 14vh, 11rem) clamp(3.5rem, 9vh, 6rem);
+  align-items: center;
+  /* top only clears the fixed 68px navbar; vertical centring does the rest */
+  padding-block: calc(68px + 1.25rem) clamp(2.5rem, 6vh, 4.5rem);
   overflow: hidden;
   isolation: isolate;
 }
@@ -49,26 +51,19 @@
 
 .inner {
   position: relative;
-  max-width: 56rem;
-}
-
-.eyebrow {
-  color: var(--oak);
-  margin-bottom: 1.4rem;
-  animation: rise 0.9s var(--ease-out) both;
-}
-
-.eyebrow::before {
-  background: var(--oak);
+  max-width: 48rem;
 }
 
 .title {
   color: var(--paper);
-  font-size: var(--step-5);
+  /* width-fluid, but also capped by viewport height so the whole hero
+     always fits one screen, even on short laptops */
+  font-size: min(var(--step-4), 9svh);
   font-weight: 500;
-  letter-spacing: -0.02em;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
   text-shadow: 0 2px 30px oklch(0.2 0.01 60 / 0.4);
-  animation: rise 0.9s var(--ease-out) 0.08s both;
+  animation: rise 0.9s var(--ease-out) both;
 }
 
 .em {
@@ -78,13 +73,13 @@
 }
 
 .lede {
-  color: oklch(0.94 0.01 75 / 0.92);
-  font-size: var(--step-1);
-  line-height: 1.5;
-  max-width: 40ch;
-  margin-top: 1.6rem;
+  color: oklch(0.94 0.01 75 / 0.88);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  max-width: 46ch;
+  margin-top: 1.4rem;
   text-shadow: 0 1px 16px oklch(0.2 0.01 60 / 0.5);
-  animation: rise 0.9s var(--ease-out) 0.16s both;
+  animation: rise 0.9s var(--ease-out) 0.1s both;
 }
 
 .cta {
@@ -92,8 +87,8 @@
   align-items: center;
   gap: clamp(1rem, 3vw, 2rem);
   flex-wrap: wrap;
-  margin-top: 2.4rem;
-  animation: rise 0.9s var(--ease-out) 0.24s both;
+  margin-top: 2rem;
+  animation: rise 0.9s var(--ease-out) 0.18s both;
 }
 
 .arrow {
@@ -191,13 +186,18 @@
   }
 }
 
-/* ---- mobile: full-screen, well-framed, readable ---- */
+/* ---- mobile: everything fits one screen, framed and readable ---- */
 @media (max-width: 680px) {
   .hero {
-    /* dvh keeps it filling the screen as the browser bar shows/hides */
-    height: 100dvh;
+    /* dvh tracks the browser bar showing/hiding */
     min-height: 100dvh;
-    padding-block: 6rem 2.5rem;
+    padding-block: calc(68px + 1.25rem)
+      calc(1.75rem + env(safe-area-inset-bottom));
+  }
+
+  /* no forced line break on a narrow column */
+  .deskBr {
+    display: none;
   }
 
   /* frame the staircase toward the centre on a tall portrait crop */
@@ -220,25 +220,29 @@
     max-width: 100%;
   }
 
-  .eyebrow {
-    margin-bottom: 1rem;
+  /* width-fluid AND height-capped: short phones get a smaller headline
+     automatically, so the full hero always fits the first screen */
+  .title {
+    font-size: min(clamp(1.8rem, 1rem + 5.8vw, 2.5rem), 5.2svh);
+    line-height: 1.14;
   }
 
   .lede {
-    margin-top: 1.1rem;
-    max-width: 34ch;
+    margin-top: 1rem;
+    font-size: min(1.02rem, 2.3svh);
+    max-width: 38ch;
   }
 
   .cta {
-    margin-top: 1.8rem;
-    gap: 1rem;
+    margin-top: min(1.6rem, 3svh);
+    gap: 0.9rem;
     width: 100%;
   }
 
   /* full-width primary CTA, comfortable tap target */
   .cta :global(.btn-primary) {
     width: 100%;
-    padding-block: 1.05rem;
+    padding-block: 1rem;
   }
 
   .textLink {
@@ -246,6 +250,22 @@
   }
 
   /* the sticky mobile bar guides scrolling; drop the thin indicator */
+  .scroll {
+    display: none;
+  }
+}
+
+/* very short screens (landscape phones, small laptops): tighten further */
+@media (max-height: 560px) {
+  .hero {
+    padding-block: calc(68px + 0.75rem) 1.5rem;
+  }
+  .lede {
+    display: none;
+  }
+  .cta {
+    margin-top: 1rem;
+  }
   .scroll {
     display: none;
   }

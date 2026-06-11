@@ -43,11 +43,9 @@ export default function Hero() {
       </div>
 
       <div className={`wrap ${s.inner}`}>
-        <p className={`eyebrow ${s.eyebrow}`}>Atelier de scări din lemn masiv</p>
-
         <h1 className={s.title}>
-          Scara nu este doar trecere
-          <br />
+          Scara nu este doar trecere{" "}
+          <br className={s.deskBr} />
           între etaje.{" "}
           <em className={s.em}>Este piesa centrală a casei.</em>
         </h1>

@@ -27,20 +27,28 @@ const STEPS = [
 export default function Process() {
   return (
     <section className={s.section} id="proces">
-      <div className="wrap">
-        <Reveal className={s.head}>
+      <div className={`wrap ${s.grid}`}>
+        <Reveal className={s.intro}>
           <p className="eyebrow">Cum lucrăm</p>
           <h2 className={s.title}>
             De la prima discuție <span className={s.thin}>la prima urcare.</span>
           </h2>
+          <p className={s.note}>
+            Patru trepte, fără surprize. De la schiță până la mâna curentă pe
+            care o veți atinge zilnic.
+          </p>
         </Reveal>
 
-        <ol className={s.steps}>
+        {/* the steps climb like a staircase: each tread sits a notch higher */}
+        <ol className={s.flight}>
           {STEPS.map((step, i) => (
-            <Reveal as="li" key={step.n} delay={i * 90} className={s.step}>
-              <span className={s.num}>{step.n}</span>
-              <h3 className={s.stepTitle}>{step.title}</h3>
-              <p className={s.stepText}>{step.text}</p>
+            <Reveal as="li" key={step.n} delay={i * 110} className={s.tread}>
+              <span className={s.riser} aria-hidden />
+              <span className={s.n}>{step.n}</span>
+              <div className={s.body}>
+                <h3 className={s.treadTitle}>{step.title}</h3>
+                <p className={s.treadText}>{step.text}</p>
+              </div>
             </Reveal>
           ))}
         </ol>
