@@ -33,7 +33,7 @@ export default function Hero() {
         <div className={s.mediaInner} ref={imgRef}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/gallery/modern-01.jpg"
+            src="/gallery/modern-01.webp"
             alt=""
             fetchPriority="high"
             decoding="async"

@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import CountUp from "./CountUp";
 import s from "./Trust.module.css";
 
 /* NOTE: stats marked as placeholders — confirm real numbers with client. */
@@ -15,7 +16,7 @@ export default function Trust() {
       <div className={`wrap ${s.row}`}>
         {STATS.map((stat, i) => (
           <Reveal as="div" key={stat.label} delay={i * 80} className={s.item}>
-            <span className={s.value}>{stat.value}</span>
+            <CountUp value={stat.value} className={s.value} />
             <span className={s.label}>{stat.label}</span>
           </Reveal>
         ))}

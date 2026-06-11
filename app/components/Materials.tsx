@@ -22,7 +22,7 @@ export default function Materials() {
         <Reveal className={s.media}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/gallery/modern-05.jpg"
+            src="/gallery/modern-05.webp"
             alt="Detaliu de trepte din stejar masiv cu finisaj natural cald"
             loading="lazy"
             decoding="async"

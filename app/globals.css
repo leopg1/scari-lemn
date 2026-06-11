@@ -205,6 +205,11 @@ button {
   box-shadow: var(--shadow-md);
 }
 
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.1s;
+}
+
 .btn-ghost {
   color: var(--ink);
   border: 1px solid var(--hairline);

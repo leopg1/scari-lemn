@@ -95,16 +95,24 @@ export default function Gallery() {
           })}
         </div>
 
-        <div className={s.grid}>
+        <div className={s.grid} key={filter}>
           {visible.map((photo, i) => (
             <button
               key={photo.src}
               className={s.cell}
+              style={{ "--d": `${Math.min(i, 12) * 45}ms` } as React.CSSProperties}
               onClick={() => setLightbox(i)}
               aria-label={`Mărește: ${photo.alt}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.w}
+                height={photo.h}
+                loading="lazy"
+                decoding="async"
+              />
               <span className={s.cellGlow} aria-hidden />
             </button>
           ))}
@@ -135,7 +143,12 @@ export default function Gallery() {
 
           <figure className={s.lbFigure} onClick={(e) => e.stopPropagation()}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={active.src} alt={active.alt} />
+            <img
+              key={active.src}
+              src={active.src}
+              alt={active.alt}
+              className={s.lbImg}
+            />
             <figcaption className={s.lbCaption}>
               <span>{active.alt}</span>
               <span className={s.lbCounter}>
